@@ -128,7 +128,7 @@ touch 1-deployment.yaml
             # apiVersion: v1
             # kind: Namespace
             # metadata:
-            #   name: my-app
+            #   name: production
 
 # 41. paste the following code in the 1-deployment.yaml file
             # apiVersion: apps/v1
@@ -154,7 +154,40 @@ touch 1-deployment.yaml
             #         ports:
             #         - containerPort: 80
 
-# 42. Create a new file
+# 42. In the main directory create a new folder
+mkdir 1-example
+
+# 43. Change directory
+cd 1-example
+
+# 44. Create a new file
+touch application.yaml
+
+# 45. Paste the following code in the application.yaml file
+            # apiVersion: argoproj.io/v1alpha1
+            # kind: Application
+            # metadata:
+            #   name: my-app
+            #   namespace: argocd
+            # spec:
+            #   destination:
+            #     server: https://kubernetes.default.svc
+            #   project: default
+            #   source:
+            #     path: my-app
+            #     repoURL:<paste the name of the repository here>
+
+# 46. Add the changes to github
+git add .
+git commit -m "first commit"
+git push -u origin main
+
+# 47. Apply the application in argocd
+kubectl apply -f 1-example/application.yaml
+
+# 48. Go to argocd and verify the application
+    # http://localhost:8081
+
 
 
 
