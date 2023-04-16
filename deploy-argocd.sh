@@ -242,18 +242,43 @@ git push -u origin main
             #       prune: true
             #       selfHeal: true
 
-# 54. Add the changes to github
+# 54. Apply the application in argocd
+kubectl apply -f 1-example/application.yaml
+
+# 55 Update the image and push it to dockerhub
+docker tag nginx:1.23.4 jose10000/nginx:v0.1.2
+docker push jose10000/nginx:v0.1.2
+
+# 56. Update the deployment file
+            # apiVersion: apps/v1
+            # kind: Deployment
+            # metadata:
+            #   name: nginx-deployment
+            #   namespace: production
+            #   labels:
+            #     app: nginx
+            # spec:
+            #   replicas: 1
+            #   selector:
+            #     matchLabels:
+            #       app: nginx
+            #   template:
+            #     metadata:
+            #       labels:
+            #         app: nginx
+            #     spec:
+            #       containers:
+            #       - name: nginx
+            #         image: jose10000/nginx:v0.1.2
+            #         ports:
+            #         - containerPort: 80
+
+# 57. Add the changes to github
 git add .
 git commit -m "third commit"
 git push -u origin main
 
-# 55. Apply the application in argocd
-kubectl apply -f 1-example/application.yaml
-
-# 57 Update the image and push it to dockerhub
-docker tag nginx:1.23.4 jose10000/nginx:v0.1.2
-docker push jose10000/nginx:v0.1.2
-
 # 58. Go to argocd and verify the application
     # http://localhost:8081
-    
+
+
