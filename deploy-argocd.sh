@@ -192,5 +192,36 @@ kubectl apply -f 1-example/application.yaml
 docker tag nginx:1.23.4 jose10000/nginx:v0.1.1
 docker push jose10000/nginx:v0.1.1
 
+# 50. Update de deployment file
+            # apiVersion: apps/v1
+            # kind: Deployment
+            # metadata:
+            #   name: nginx-deployment
+            #   namespace: production
+            #   labels:
+            #     app: nginx
+            # spec:
+            #   replicas: 1
+            #   selector:
+            #     matchLabels:
+            #       app: nginx
+            #   template:
+            #     metadata:
+            #       labels:
+            #         app: nginx
+            #     spec:
+            #       containers:
+            #       - name: nginx
+            #         image: jose10000/nginx:v0.1.1
+            #         ports:
+            #         - containerPort: 80
+
+# 51. Add the changes to github
+git add .
+git commit -m "second commit"
+git push -u origin main
+
+# 52. Go to argocd and verify the application
+    # http://localhost:8081
 
 
