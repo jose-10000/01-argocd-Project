@@ -224,4 +224,36 @@ git push -u origin main
 # 52. Go to argocd and verify the application
     # http://localhost:8081
 
+# 53. Add a sync policy to application.yaml
+            # apiVersion: argoproj.io/v1alpha1
+            # kind: Application
+            # metadata:
+            #   name: my-app
+            #   namespace: argocd
+            # spec:
+            #   destination:
+            #     server: https://kubernetes.default.svc
+            #   project: default
+            #   source:
+            #     path: my-app
+            #     repoURL: <paste the name of the repository here>
+            #   syncPolicy:
+            #     automated:
+            #       prune: true
+            #       selfHeal: true
 
+# 54. Add the changes to github
+git add .
+git commit -m "third commit"
+git push -u origin main
+
+# 55. Apply the application in argocd
+kubectl apply -f 1-example/application.yaml
+
+# 57 Update the image and push it to dockerhub
+docker tag nginx:1.23.4 jose10000/nginx:v0.1.2
+docker push jose10000/nginx:v0.1.2
+
+# 58. Go to argocd and verify the application
+    # http://localhost:8081
+    
