@@ -188,6 +188,9 @@ kubectl apply -f 1-example/application.yaml
 # 48. Go to argocd and verify the application
     # http://localhost:8081
 
+# 49. Update the image and push it to dockerhub
+docker tag nginx:1.23.4 jose10000/nginx:v0.1.1
+docker push jose10000/nginx:v0.1.1
 
 
 
