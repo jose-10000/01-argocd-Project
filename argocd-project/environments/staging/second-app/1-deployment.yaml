@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
-  namespace: production
+  namespace: bar
   labels:
     app: nginx
 spec:
@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: jose10000/nginx:v0.2.1
+          image: jose10000/nginx:v0.1.2
           ports:
             - containerPort: 80

@@ -281,4 +281,4 @@ git push -u origin main
 # 58. Go to argocd and verify the application
     # http://localhost:8081
 
-
+# 59. To automate the process of updating the image, go to update.sh
