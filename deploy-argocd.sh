@@ -282,3 +282,19 @@ git push -u origin main
     # http://localhost:8081
 
 # 59. To automate the process of updating the image, go to update.sh
+
+# 60. Add the changes to github
+git add .
+git commit -m "fourth commit"
+git push -u origin main
+
+# 61. Go to argocd and verify the application
+    # http://localhost:8081
+
+# Delete the application
+kubectl delete -f 1-example/application.yaml
+
+# go to 2-example and apply the application
+kubectl apply -f 2-example/application.yaml
+
+# Done
