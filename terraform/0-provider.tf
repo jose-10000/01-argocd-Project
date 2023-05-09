@@ -1,7 +1,8 @@
+# Code for minikube
 provider "helm" {
-    kubernetes {
-        config_path = "~/.kube/config"
-    }
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
 }
 
 # Code for AWS EKS

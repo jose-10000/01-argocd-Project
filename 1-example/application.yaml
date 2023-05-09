@@ -1,3 +1,4 @@
+# This file is used to create an application in ArgoCD
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -11,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/jose-10000/01-argocd-Project.git
     targetRevision: HEAD
-    path: argocd-project/my-app
+    path: argocd-project/environments/staging/my-app
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
