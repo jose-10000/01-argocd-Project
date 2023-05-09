@@ -1,6 +1,6 @@
 #!/bin/bash
 # 1. make this file executable with chmod +x upgrade.sh
-# 2. run this file with ./upgrade.sh <version>
+# 2. run this file with ./upgrade.sh <version>, for example ./upgrade.sh v1.23.4
 
 # exit when any command fails
 set -e
@@ -24,7 +24,7 @@ echo $tmp_dir
 git clone git@github.com:jose-10000/01-argocd-Project.git $tmp_dir
 
 # Update image tag in deployment.yaml
-sed -i "s/jose10000\/nginx:.*/jose10000\/nginx:$new_ver/g" $tmp_dir/argocd-project/my-app/1-deployment.yaml
+sed -i "s/jose10000\/nginx:.*/jose10000\/nginx:$new_ver/g" $tmp_dir/argocd-project/environments/staging/my-app/1-deployment.yaml
 
 # Commit and push
 echo "Committing and pushing changes to GitHub"
