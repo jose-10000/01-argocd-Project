@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dev-grupo3
+  namespace: project
+  labels:
+    app: dev-grupo3
 spec:
   selector:
     matchLabels:
