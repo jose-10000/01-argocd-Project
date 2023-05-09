@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: dev-grupo3
   namespace: project
+  labels:
+    app: dev-grupo3
 spec:
   selector:
     app: dev-grupo3
