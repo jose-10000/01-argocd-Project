@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dev-grupo3
+  namespace: project
 spec:
   selector:
     app: dev-grupo3
